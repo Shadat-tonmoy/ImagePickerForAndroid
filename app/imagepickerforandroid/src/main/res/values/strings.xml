@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="select_all">Select All</string>
+    <string name="selected">Selected(%d)</string>
+    <string name="done">Done</string>
+    <string name="fetching_image_message">Please wait until the image list is fetched</string>
+    <string name="no_file_found">No File Found!!</string>
+    <string name="folder_title">Folder Title</string>
+    <string name="folder_path">Folder Path</string>
+</resources>
