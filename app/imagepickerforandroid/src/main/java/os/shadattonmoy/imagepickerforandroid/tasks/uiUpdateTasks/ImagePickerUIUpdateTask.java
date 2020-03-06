@@ -2,7 +2,10 @@ package os.shadattonmoy.imagepickerforandroid.tasks.uiUpdateTasks;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TabHost;
@@ -12,8 +15,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import os.shadattonmoy.imagepickerforandroid.R;
+import os.shadattonmoy.imagepickerforandroid.constants.Constants;
 import os.shadattonmoy.imagepickerforandroid.constants.Tags;
 import os.shadattonmoy.imagepickerforandroid.ui.screenView.ImagePickerActivityScreenView;
+
+import static os.shadattonmoy.imagepickerforandroid.constants.Constants.INVALID;
 
 public class ImagePickerUIUpdateTask
 {
@@ -60,8 +66,21 @@ public class ImagePickerUIUpdateTask
 
     public void setupToolbar(Intent toolbarProperties)
     {
-        int toolbarColor = toolbarProperties.getIntExtra(Tags.TOOLBAR_COLOR,-1);
+        int toolbarColor = toolbarProperties.getIntExtra(Tags.TOOLBAR_COLOR,INVALID);
+        int navigationIcon = toolbarProperties.getIntExtra(Tags.NAVIGATION_ICON,INVALID);
         if(toolbarColor!=-1)
             screenView.getToolbar().setBackgroundColor(toolbarColor);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+        {
+            int statusBarColor = toolbarProperties.getIntExtra(Tags.STATUS_BAR_COLOR, INVALID);
+            if(statusBarColor!= INVALID)
+            {
+                Window window = activity.getWindow();
+                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                window.setStatusBarColor(statusBarColor);
+            }
+        }
+        screenView.getToolbar().setNavigationIcon(activity.getResources().getDrawable(navigationIcon));
     }
 }

@@ -2,8 +2,12 @@ package os.shadattonmoy.imagepickerforandroid.ui.actvities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Window;
+import android.view.WindowManager;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
@@ -11,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import os.shadattonmoy.imagepickerforandroid.constants.Constants;
 import os.shadattonmoy.imagepickerforandroid.constants.ImagePickerType;
+import os.shadattonmoy.imagepickerforandroid.constants.Tags;
 import os.shadattonmoy.imagepickerforandroid.controller.ImagePickerActivityController;
 import os.shadattonmoy.imagepickerforandroid.ui.screenView.ImagePickerActivityScreenView;
 

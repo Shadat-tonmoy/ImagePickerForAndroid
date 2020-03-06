@@ -40,6 +40,8 @@ public class MainActivity extends AppCompatActivity
         {
             ImagePickerForAndroid imagePickerForAndroid = new ImagePickerForAndroid.Builder(this)
                     .toolbarColor(this.getResources().getColor(R.color.colorRed))
+                    .statusBarColor(this.getResources().getColor(R.color.colorRed))
+                    .navigationIcon(R.drawable.back_white_cupertino)
                     .build();
             imagePickerForAndroid.openImagePicker();
 
