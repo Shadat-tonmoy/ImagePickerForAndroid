@@ -1,4 +1,4 @@
-package os.shadattonmoy.imagepickerforandroid;
+package os.shadattonmoy.imagepickerforandroidExample;
 
 import android.content.Context;
 

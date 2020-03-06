@@ -3,8 +3,10 @@ package os.shadattonmoy.imagepickerforandroid.ui.actvities;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import os.shadattonmoy.imagepickerforandroid.constants.Constants;
@@ -14,9 +16,9 @@ import os.shadattonmoy.imagepickerforandroid.ui.screenView.ImagePickerActivitySc
 
 public class ImagePickerActivity extends AppCompatActivity
 {
+    private static final String TAG = "ImagePickerActivity";
 
-
-    ImagePickerActivityController controller;
+    private ImagePickerActivityController controller;
     private Activity activity;
     private ImagePickerActivityScreenView screenView;
 
@@ -31,12 +33,25 @@ public class ImagePickerActivity extends AppCompatActivity
         activity = this;
         ImagePickerType imagePickerType = getFilePickerType();
         screenView = new ImagePickerActivityScreenView(activity.getLayoutInflater(),null);
+        controller = new ImagePickerActivityController(activity);
         controller.bindView(screenView);
-        setSupportActionBar(screenView.getToolbar());
+        setActionBar();
         setContentView(screenView.getRootView());
         initSelectionBundle();
         controller.onCreate(imagePickerType);
 
+    }
+
+    private void setActionBar() {
+        ActionBar actionBar = getSupportActionBar();
+        if(actionBar!=null)
+        {
+            actionBar.hide();
+        }
+        else
+        {
+            setSupportActionBar(screenView.getToolbar());
+        }
     }
 
     private void initSelectionBundle()

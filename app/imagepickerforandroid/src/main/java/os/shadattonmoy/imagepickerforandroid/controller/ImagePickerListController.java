@@ -2,11 +2,9 @@ package os.shadattonmoy.imagepickerforandroid.controller;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.MenuItem;
 
 import java.util.List;
 
-import os.shadattonmoy.imagepickerforandroid.R;
 import os.shadattonmoy.imagepickerforandroid.constants.Constants;
 import os.shadattonmoy.imagepickerforandroid.constants.ImagePickerType;
 import os.shadattonmoy.imagepickerforandroid.constants.SortingType;
