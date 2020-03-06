@@ -1,6 +1,7 @@
 package os.shadattonmoy.imagepickerforandroid.controller;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
 import os.shadattonmoy.imagepickerforandroid.constants.Constants;
@@ -40,6 +41,12 @@ public class ImagePickerActivityController implements ImagePickerActivityScreen.
         arguments.putSerializable(Constants.IMAGE_PICKER_TYPE, imagePickerType);
         uiUpdateTask.setToolbarSpinner();
         uiUpdateTask.replaceFragment(ImagePickerGridFragment.newInstance(arguments), Constants.IMAGE_PICKER_LIST_FRAGMENT);
+    }
+
+    public void setupToolbar(Intent toolbarProperties)
+    {
+        uiUpdateTask.setupToolbar(toolbarProperties);
+
     }
 
     public void onStart()
@@ -112,6 +119,5 @@ public class ImagePickerActivityController implements ImagePickerActivityScreen.
     public void initToolbarAction()
     {
         screenView.initToolbarAction();
-
     }
 }

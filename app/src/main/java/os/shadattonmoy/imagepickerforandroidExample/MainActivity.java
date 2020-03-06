@@ -8,6 +8,7 @@ import android.widget.Button;
 
 import os.shadattonmoy.imagepickerforandroid.ImagePickerForAndroid;
 import os.shadattonmoy.imagepickerforandroid.helpers.AppPermissionHelper;
+import os.shadattonmoy.imagepickerforandroidExample.R;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -37,7 +38,12 @@ public class MainActivity extends AppCompatActivity
     {
         if(AppPermissionHelper.hasWriteExternalStoragePermission(this))
         {
-            ImagePickerForAndroid.openImagePicker(this);
+            ImagePickerForAndroid imagePickerForAndroid = new ImagePickerForAndroid.Builder(this)
+                    .toolbarColor(this.getResources().getColor(R.color.colorRed))
+                    .build();
+            imagePickerForAndroid.openImagePicker();
+
+
 
         }
     }

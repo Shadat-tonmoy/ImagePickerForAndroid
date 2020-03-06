@@ -39,6 +39,8 @@ public class ImagePickerActivity extends AppCompatActivity
         setContentView(screenView.getRootView());
         initSelectionBundle();
         controller.onCreate(imagePickerType);
+        controller.setupToolbar(getIntent());
+
 
     }
 
@@ -94,6 +96,7 @@ public class ImagePickerActivity extends AppCompatActivity
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         controller.initToolbarAction();
+
     }
 
     public ImagePickerActivityScreenView getScreenView() {
