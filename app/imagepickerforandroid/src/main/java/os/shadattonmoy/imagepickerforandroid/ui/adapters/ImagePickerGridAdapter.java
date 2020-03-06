@@ -81,21 +81,30 @@ public class ImagePickerGridAdapter extends BaseAdapter
 
         Glide.with(context).load(imagePaths.get(position))
                 .into(viewHolder.imageView);
-        if(selectedPositions!=null && selectedPositions.get(position)!=null && selectedPositions.get(position))
+        if(selectMultiple)
         {
-            if(selectionIds!=null && selectionIds.get(position)!=null)
+            viewHolder.selectionCountView.setVisibility(View.VISIBLE);
+            if(selectedPositions!=null && selectedPositions.get(position)!=null && selectedPositions.get(position))
             {
+                if(selectionIds!=null && selectionIds.get(position)!=null)
+                {
 
-                viewHolder.selectionCountView.setText(selectionIds.get(position)+ Constants.EMPTY_TEXT);
-                viewHolder.selectionCountView.setBackgroundResource(R.drawable.circle_background_blue);
+                    viewHolder.selectionCountView.setText(selectionIds.get(position)+ Constants.EMPTY_TEXT);
+                    viewHolder.selectionCountView.setBackgroundResource(R.drawable.circle_background_blue);
+                }
+            }
+            else
+            {
+                viewHolder.selectionCountView.setBackgroundResource(R.drawable.circle_background_trans);
+                viewHolder.selectionCountView.setText(Constants.EMPTY_TEXT);
+
             }
         }
         else
         {
-            viewHolder.selectionCountView.setBackgroundResource(R.drawable.circle_background_trans);
-            viewHolder.selectionCountView.setText(Constants.EMPTY_TEXT);
-
+            viewHolder.selectionCountView.setVisibility(View.GONE);
         }
+
         return cell;
     }
 

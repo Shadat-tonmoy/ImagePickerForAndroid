@@ -8,6 +8,7 @@ import java.util.List;
 
 import os.shadattonmoy.imagepickerforandroid.constants.Constants;
 import os.shadattonmoy.imagepickerforandroid.constants.ImagePickerType;
+import os.shadattonmoy.imagepickerforandroid.constants.Tags;
 import os.shadattonmoy.imagepickerforandroid.tasks.ImageFileFetchingTask;
 import os.shadattonmoy.imagepickerforandroid.tasks.uiUpdateTasks.ImagePickerGridUIUpdateTask;
 import os.shadattonmoy.imagepickerforandroid.ui.screen.ImagePickerGridScreen;
@@ -20,7 +21,7 @@ public class ImagePickerGridController implements ImagePickerGridScreen.Listener
     ImagePickerGridUIUpdateTask uiUpdateTask;
     private ImagePickerGridScreenView screenView;
     private Bundle arguments;
-    private boolean selectAll = false, forAppending = false;
+    private boolean selectAll = false, isBatchModeEnabled = false;
 
     public ImagePickerGridController(Activity activity)
     {
@@ -48,8 +49,9 @@ public class ImagePickerGridController implements ImagePickerGridScreen.Listener
     public void bindArguments(Bundle arguments)
     {
         this.arguments = arguments;
-        forAppending = arguments.getBoolean(Constants.FOR_ADDING_MORE_IMAGE);
+        isBatchModeEnabled = arguments.getBoolean(Tags.BATCH_MODE_ENABLED,false);
         uiUpdateTask.bindSelectionBundle(arguments);
+        uiUpdateTask.enableBatchMode(isBatchModeEnabled);
     }
 
     private void startFetchingImages()

@@ -43,7 +43,7 @@ public class ImagePickerActivity extends AppCompatActivity
         setActionBar();
         setContentView(screenView.getRootView());
         initSelectionBundle();
-        controller.onCreate(imagePickerType);
+        controller.onCreate(getIntent(),imagePickerType);
         controller.setupToolbar(getIntent());
 
 

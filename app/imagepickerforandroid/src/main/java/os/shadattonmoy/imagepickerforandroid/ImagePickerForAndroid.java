@@ -14,6 +14,7 @@ public class ImagePickerForAndroid
     private int toolbarColor = INVALID;
     private int statusBarColor = INVALID;
     private int navigationIcon = INVALID;
+    private boolean isBatchModeEnabled = false;
     private Context context;
     public void openImagePicker()
     {
@@ -21,6 +22,7 @@ public class ImagePickerForAndroid
         intent.putExtra(Tags.TOOLBAR_COLOR,toolbarColor);
         intent.putExtra(Tags.STATUS_BAR_COLOR,statusBarColor);
         intent.putExtra(Tags.NAVIGATION_ICON,navigationIcon);
+        intent.putExtra(Tags.BATCH_MODE_ENABLED,isBatchModeEnabled);
         context.startActivity(intent);
     }
 
@@ -29,12 +31,14 @@ public class ImagePickerForAndroid
         this.toolbarColor = builder.toolbarColor;
         this.statusBarColor = builder.statusBarColor;
         this.navigationIcon = builder.navigationIcon;
+        this.isBatchModeEnabled = builder.isBatchModeEnabled;
         this.context = builder.context;
     }
 
     public static class Builder
     {
         private int toolbarColor,statusBarColor,navigationIcon;
+        private boolean isBatchModeEnabled;
         private Context context;
 
         public Builder(Context context)
@@ -43,6 +47,7 @@ public class ImagePickerForAndroid
             toolbarColor = INVALID;
             statusBarColor = INVALID;
             navigationIcon = INVALID;
+            isBatchModeEnabled = false;
         }
 
         public Builder toolbarColor(int toolbarColor)
@@ -60,6 +65,12 @@ public class ImagePickerForAndroid
         public Builder navigationIcon(int navigationIcon)
         {
             this.navigationIcon = navigationIcon;
+            return this;
+        }
+
+        public Builder enableBatchMode()
+        {
+            this.isBatchModeEnabled = true;
             return this;
         }
 

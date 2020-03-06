@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import os.shadattonmoy.imagepickerforandroid.constants.Constants;
 import os.shadattonmoy.imagepickerforandroid.constants.ImagePickerType;
+import os.shadattonmoy.imagepickerforandroid.constants.Tags;
 import os.shadattonmoy.imagepickerforandroid.tasks.uiUpdateTasks.ImagePickerUIUpdateTask;
 import os.shadattonmoy.imagepickerforandroid.ui.fragments.ImagePickerGridFragment;
 import os.shadattonmoy.imagepickerforandroid.ui.fragments.ImagePickerListFragment;
@@ -19,7 +20,7 @@ public class ImagePickerActivityController implements ImagePickerActivityScreen.
     Activity activity;
     private ImagePickerActivityScreenView screenView;
     private ImagePickerUIUpdateTask uiUpdateTask;
-    private boolean firstStart = true;
+    private boolean firstStart = true, isBatchModeEnabled = false;
     private ImagePickerType imagePickerType = ImagePickerType.FOLDER_LIST_FOR_IMAGE;
     private Bundle arguments;
 
@@ -35,10 +36,12 @@ public class ImagePickerActivityController implements ImagePickerActivityScreen.
         uiUpdateTask.bindView(this.screenView);
     }
 
-    public void onCreate(ImagePickerType imagePickerType)
+    public void onCreate(Intent extras, ImagePickerType imagePickerType)
     {
         this.imagePickerType = imagePickerType;
+        this.isBatchModeEnabled = extras.getBooleanExtra(Tags.BATCH_MODE_ENABLED,false);
         arguments.putSerializable(Constants.IMAGE_PICKER_TYPE, imagePickerType);
+        arguments.putBoolean(Tags.BATCH_MODE_ENABLED, isBatchModeEnabled);
         uiUpdateTask.setToolbarSpinner();
         uiUpdateTask.replaceFragment(ImagePickerGridFragment.newInstance(arguments), Constants.IMAGE_PICKER_LIST_FRAGMENT);
     }

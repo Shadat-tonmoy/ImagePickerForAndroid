@@ -114,6 +114,20 @@ public class ImagePickerGridUIUpdateTask
         updateTotalSelectionText();
     }
 
+    public void enableBatchMode(boolean isBatchModeEnabled)
+    {
+        screenView.getImagePickerGridAdapter().setSelectMultiple(isBatchModeEnabled);
+        if(isBatchModeEnabled)
+        {
+            screenView.getButtonPanel().setVisibility(View.VISIBLE);
+        }
+        else
+        {
+            screenView.getButtonPanel().setVisibility(View.GONE);
+        }
+
+    }
+
     public void hideLoadingView()
     {
         screenView.getLoadingView().setVisibility(View.GONE);
