@@ -107,4 +107,8 @@ public class ImagePickerActivity extends AppCompatActivity
     public ImagePickerActivityScreenView getScreenView() {
         return screenView;
     }
+
+    public ImagePickerActivityController getController() {
+        return controller;
+    }
 }

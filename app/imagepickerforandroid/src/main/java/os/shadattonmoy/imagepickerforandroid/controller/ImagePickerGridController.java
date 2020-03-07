@@ -11,6 +11,7 @@ import os.shadattonmoy.imagepickerforandroid.constants.ImagePickerType;
 import os.shadattonmoy.imagepickerforandroid.constants.Tags;
 import os.shadattonmoy.imagepickerforandroid.tasks.ImageFileFetchingTask;
 import os.shadattonmoy.imagepickerforandroid.tasks.uiUpdateTasks.ImagePickerGridUIUpdateTask;
+import os.shadattonmoy.imagepickerforandroid.ui.actvities.ImagePickerActivity;
 import os.shadattonmoy.imagepickerforandroid.ui.screen.ImagePickerGridScreen;
 import os.shadattonmoy.imagepickerforandroid.ui.screenView.ImagePickerGridScreenView;
 
@@ -108,7 +109,9 @@ public class ImagePickerGridController implements ImagePickerGridScreen.Listener
     @Override
     public void onDoneButtonClicked()
     {
-
+        ((ImagePickerActivity)activity)
+                .getController()
+                .onImageListSelected(screenView.getImagePickerGridAdapter().getSelectedImages());
     }
 
     @Override

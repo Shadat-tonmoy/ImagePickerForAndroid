@@ -3,7 +3,11 @@ package os.shadattonmoy.imagepickerforandroid.controller;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
+import java.util.List;
+
+import os.shadattonmoy.imagepickerforandroid.ImagePickerForAndroid;
 import os.shadattonmoy.imagepickerforandroid.constants.Constants;
 import os.shadattonmoy.imagepickerforandroid.constants.ImagePickerType;
 import os.shadattonmoy.imagepickerforandroid.constants.Tags;
@@ -16,13 +20,14 @@ import os.shadattonmoy.imagepickerforandroid.ui.screenView.ImagePickerActivitySc
 public class ImagePickerActivityController implements ImagePickerActivityScreen.Listener
 {
 
-
-    Activity activity;
+    private static final String TAG = "ImagePickerActivityCont";
+    private Activity activity;
     private ImagePickerActivityScreenView screenView;
     private ImagePickerUIUpdateTask uiUpdateTask;
     private boolean firstStart = true, isBatchModeEnabled = false;
     private ImagePickerType imagePickerType = ImagePickerType.FOLDER_LIST_FOR_IMAGE;
     private Bundle arguments;
+    private ImagePickerForAndroid imagePickerForAndroid;
 
     public ImagePickerActivityController(Activity activity)
     {
@@ -40,10 +45,11 @@ public class ImagePickerActivityController implements ImagePickerActivityScreen.
     {
         this.imagePickerType = imagePickerType;
         this.isBatchModeEnabled = extras.getBooleanExtra(Tags.BATCH_MODE_ENABLED,false);
+        this.imagePickerForAndroid = extras.getParcelableExtra(Tags.IMAGE_PICKER_FOR_ANDROID);
         arguments.putSerializable(Constants.IMAGE_PICKER_TYPE, imagePickerType);
         arguments.putBoolean(Tags.BATCH_MODE_ENABLED, isBatchModeEnabled);
         uiUpdateTask.setToolbarSpinner();
-        uiUpdateTask.replaceFragment(ImagePickerGridFragment.newInstance(arguments), Constants.IMAGE_PICKER_LIST_FRAGMENT);
+        openImagePickerGridFragment();
     }
 
     public void setupToolbar(Intent toolbarProperties)
@@ -70,14 +76,9 @@ public class ImagePickerActivityController implements ImagePickerActivityScreen.
 
     }
 
-    @Override
-    public void onSelectAllButtonClicked() {
-
-    }
-
-    @Override
-    public void onDoneButtonClicked() {
-
+    public void onImageListSelected(List<String> selectedImageList)
+    {
+        imagePickerForAndroid.onImageListSelected(selectedImageList);
     }
 
     @Override
@@ -98,20 +99,29 @@ public class ImagePickerActivityController implements ImagePickerActivityScreen.
     {
         switch (position)
         {
-
             case 0:
-                uiUpdateTask
-                        .replaceFragment(ImagePickerGridFragment.newInstance(arguments), Constants.IMAGE_PICKER_LIST_FRAGMENT);
+                openImagePickerGridFragment();
                 break;
             case 1:
-                Bundle args = new Bundle();
-                args.putSerializable(Constants.IMAGE_PICKER_TYPE,imagePickerType);
-                if(arguments!=null)
-                    args.putBoolean(Constants.FOR_ADDING_MORE_IMAGE,arguments.getBoolean(Constants.FOR_ADDING_MORE_IMAGE,false));
-                uiUpdateTask
-                        .replaceFragment(ImagePickerListFragment.newInstance(args), Constants.IMAGE_PICKER_LIST_FRAGMENT);
+                openImagePickerListFragment();
                 break;
         }
+    }
+
+    private void openImagePickerListFragment()
+    {
+        Bundle args = new Bundle();
+        args.putSerializable(Constants.IMAGE_PICKER_TYPE,imagePickerType);
+        if(arguments!=null)
+            args.putBoolean(Constants.FOR_ADDING_MORE_IMAGE,arguments.getBoolean(Constants.FOR_ADDING_MORE_IMAGE,false));
+        uiUpdateTask
+                .replaceFragment(ImagePickerListFragment.newInstance(args), Constants.IMAGE_PICKER_LIST_FRAGMENT);
+    }
+
+    private void openImagePickerGridFragment()
+    {
+        uiUpdateTask
+                .replaceFragment(ImagePickerGridFragment.newInstance(arguments), Constants.IMAGE_PICKER_LIST_FRAGMENT);
     }
 
     public void bindSelectionBundle(Bundle bundle)

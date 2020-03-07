@@ -6,10 +6,7 @@ public interface ImagePickerActivityScreen {
     {
         void onBackButtonClicked();
 
-        void onSelectAllButtonClicked();
-
-        void onDoneButtonClicked();
-
         void onSpinnerItemSelected(int position);
+
     }
 }
