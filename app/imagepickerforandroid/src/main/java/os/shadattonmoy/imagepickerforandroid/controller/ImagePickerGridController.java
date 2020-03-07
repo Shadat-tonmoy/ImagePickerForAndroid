@@ -103,7 +103,16 @@ public class ImagePickerGridController implements ImagePickerGridScreen.Listener
     @Override
     public void onImageGridItemClicked(int position)
     {
-        uiUpdateTask.setSelection(position);
+        if(isBatchModeEnabled)
+            uiUpdateTask.setSelection(position);
+        else
+        {
+            ((ImagePickerActivity)activity)
+                    .getController()
+                    .onSingleImageSelected(screenView.getImagePickerGridAdapter().getImageAtPosition(position));
+        }
+
+
     }
 
     @Override

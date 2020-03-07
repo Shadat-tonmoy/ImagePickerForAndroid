@@ -1,15 +1,10 @@
 package os.shadattonmoy.imagepickerforandroid;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Parcel;
-import android.os.Parcelable;
-import android.util.Log;
 
-import androidx.appcompat.app.AppCompatActivity;
+import org.jetbrains.annotations.NotNull;
 
-import java.io.Serializable;
 import java.util.List;
 
 import os.shadattonmoy.imagepickerforandroid.constants.Tags;
@@ -17,12 +12,17 @@ import os.shadattonmoy.imagepickerforandroid.ui.actvities.ImagePickerActivity;
 
 import static os.shadattonmoy.imagepickerforandroid.constants.Constants.INVALID;
 
-public class ImagePickerForAndroid /*implements Parcelable*/
+public class ImagePickerForAndroid
 {
 
-    public interface ImageSelectionListener /*extends Serializable*/
+    public interface BatchImageSelectionListener
     {
-        void onImageSelected(List<String> selectedImageList);
+        void onBatchImageSelected(List<String> selectedImageList);
+    }
+
+    public interface SingleImageSelectionListener
+    {
+        void onSingleImageSelected(String selectedImage);
     }
 
     private static final String TAG = "ImagePickerForAndroid";
@@ -30,7 +30,8 @@ public class ImagePickerForAndroid /*implements Parcelable*/
     private int statusBarColor = INVALID;
     private int navigationIcon = INVALID;
     private boolean isBatchModeEnabled = false;
-    private ImageSelectionListener listener;
+    private BatchImageSelectionListener batchImageSelectionListener;
+    private SingleImageSelectionListener singleImageSelectionListener;
     private Context context;
 
     public void openImagePicker()
@@ -50,7 +51,8 @@ public class ImagePickerForAndroid /*implements Parcelable*/
         this.statusBarColor = builder.statusBarColor;
         this.navigationIcon = builder.navigationIcon;
         this.isBatchModeEnabled = builder.isBatchModeEnabled;
-        this.listener = builder.imageSelectionListener;
+        this.batchImageSelectionListener = builder.batchImageSelectionListener;
+        this.singleImageSelectionListener = builder.singleImageSelectionListener;
         this.context = builder.context;
     }
 
@@ -59,7 +61,8 @@ public class ImagePickerForAndroid /*implements Parcelable*/
     {
         private int toolbarColor,statusBarColor,navigationIcon;
         private boolean isBatchModeEnabled;
-        private ImageSelectionListener imageSelectionListener;
+        private BatchImageSelectionListener batchImageSelectionListener;
+        private SingleImageSelectionListener singleImageSelectionListener;
         private Context context;
 
         public Builder(Context context)
@@ -89,15 +92,21 @@ public class ImagePickerForAndroid /*implements Parcelable*/
             return this;
         }
 
-        public Builder enableBatchMode()
+        public Builder batchMode(boolean value)
         {
-            this.isBatchModeEnabled = true;
+            this.isBatchModeEnabled = value;
             return this;
         }
 
-        public Builder setImageSelectionListener(ImageSelectionListener listener)
+        public Builder batchImageSelectionListener(@NotNull BatchImageSelectionListener listener)
         {
-            this.imageSelectionListener = listener;
+            this.batchImageSelectionListener = listener;
+            return this;
+        }
+
+        public Builder singleImageSelectionListener(@NotNull SingleImageSelectionListener listener)
+        {
+            this.singleImageSelectionListener = listener;
             return this;
         }
 
@@ -110,7 +119,13 @@ public class ImagePickerForAndroid /*implements Parcelable*/
 
     public void onImageListSelected(List<String> selectedImageList)
     {
-        if(listener!=null)
-            listener.onImageSelected(selectedImageList);
+        if(batchImageSelectionListener !=null)
+            batchImageSelectionListener.onBatchImageSelected(selectedImageList);
+    }
+
+    public void onSingleImageSelected(String selectedImage)
+    {
+        if(singleImageSelectionListener !=null)
+            singleImageSelectionListener.onSingleImageSelected(selectedImage);
     }
 }

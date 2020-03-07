@@ -27,6 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorPrimary"
+            app:titleTextColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -40,18 +41,6 @@
                 android:backgroundTint="@color/white"
                 android:layout_gravity="start"/>
 
-            <!--<TextView
-                android:id="@+id/multiple_image_button"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="@string/select_multiple"
-                android:textColor="@color/white"
-                android:drawableStart="@drawable/select_multiple"
-                android:drawablePadding="8dp"
-                android:gravity="center"
-                android:padding="8dp"
-                android:visibility="gone"
-                android:layout_gravity="end"/>-->
 
         </androidx.appcompat.widget.Toolbar>
 

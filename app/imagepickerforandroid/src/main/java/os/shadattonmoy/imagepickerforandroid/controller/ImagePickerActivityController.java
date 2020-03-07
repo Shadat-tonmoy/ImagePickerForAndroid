@@ -81,6 +81,12 @@ public class ImagePickerActivityController implements ImagePickerActivityScreen.
         activity.finish();
     }
 
+    public void onSingleImageSelected(String selectedImage)
+    {
+        imagePickerForAndroid.onSingleImageSelected(selectedImage);
+        activity.finish();
+    }
+
     @Override
     public void onSpinnerItemSelected(int position)
     {

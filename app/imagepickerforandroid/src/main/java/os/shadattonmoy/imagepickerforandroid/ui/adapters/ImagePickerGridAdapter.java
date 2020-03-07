@@ -170,6 +170,11 @@ public class ImagePickerGridAdapter extends BaseAdapter
         return selectedImages;
     }
 
+    public String getImageAtPosition(int position)
+    {
+        return imagePaths.get(position);
+    }
+
     public int getTotalSelectedImages()
     {
         if(selectedImages==null)
