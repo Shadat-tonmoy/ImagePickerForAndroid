@@ -1,6 +1,8 @@
 package os.shadattonmoy.imagepickerforandroidExample;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -25,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements ImagePickerForAnd
     private LinearLayout singleModeOutput, batchModeOutput;
     private ImageView singleModeOutputImageView;
     private TextView outputTextView;
+    private RecyclerView batchOutputRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -37,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements ImagePickerForAnd
         outputTextView = findViewById(R.id.textView);
         singleModeOutputImageView = findViewById(R.id.single_mode_output_image);
         batchModeOutput = findViewById(R.id.batch_mode_output);
+        batchOutputRecyclerView = findViewById(R.id.batch_mode_output_recycler_view);
         singleImagePickerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -71,6 +75,13 @@ public class MainActivity extends AppCompatActivity implements ImagePickerForAnd
     @Override
     public void onBatchImageSelected(List<String> selectedImageList)
     {
+        batchModeOutput.setVisibility(View.VISIBLE);
+        singleModeOutput.setVisibility(View.GONE);
+        outputTextView.setVisibility(View.GONE);
+        BatchOutputGridAdapter batchOutputGridAdapter = new BatchOutputGridAdapter(this);
+        batchOutputRecyclerView.setLayoutManager(new GridLayoutManager(this,3));
+        batchOutputGridAdapter.bindImagePaths(selectedImageList);
+        batchOutputRecyclerView.setAdapter(batchOutputGridAdapter);
         for (String selectedImage : selectedImageList)
         {
             Log.e(TAG, "onImageListSelected: " + selectedImage);

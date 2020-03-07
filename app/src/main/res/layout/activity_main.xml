@@ -17,6 +17,11 @@
         app:layout_constraintBottom_toTopOf="@id/open_batch_button"
         android:orientation="horizontal">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/batch_mode_output_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
 
     </LinearLayout>
 
