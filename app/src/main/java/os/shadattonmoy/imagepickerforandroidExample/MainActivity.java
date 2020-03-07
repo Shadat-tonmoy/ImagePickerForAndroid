@@ -6,6 +6,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
@@ -17,6 +22,9 @@ public class MainActivity extends AppCompatActivity implements ImagePickerForAnd
 
     private static final String TAG = "MainActivity";
     private Button singleImagePickerButton, batchImagePickerButton;
+    private LinearLayout singleModeOutput, batchModeOutput;
+    private ImageView singleModeOutputImageView;
+    private TextView outputTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -25,6 +33,10 @@ public class MainActivity extends AppCompatActivity implements ImagePickerForAnd
         setContentView(R.layout.activity_main);
         singleImagePickerButton = findViewById(R.id.open_button);
         batchImagePickerButton = findViewById(R.id.open_batch_button);
+        singleModeOutput = findViewById(R.id.single_mode_output);
+        outputTextView = findViewById(R.id.textView);
+        singleModeOutputImageView = findViewById(R.id.single_mode_output_image);
+        batchModeOutput = findViewById(R.id.batch_mode_output);
         singleImagePickerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -68,6 +80,12 @@ public class MainActivity extends AppCompatActivity implements ImagePickerForAnd
     @Override
     public void onSingleImageSelected(String selectedImage)
     {
+        batchModeOutput.setVisibility(View.GONE);
+        singleModeOutput.setVisibility(View.VISIBLE);
+        outputTextView.setVisibility(View.GONE);
+        Glide.with(this)
+                .load(selectedImage)
+                .into(singleModeOutputImageView);
         Log.e(TAG, "onSingleImageSelected: "+selectedImage);
 
 
