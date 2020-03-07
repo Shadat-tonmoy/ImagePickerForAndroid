@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import os.shadattonmoy.imagepickerforandroid.ImagePickerForAndroid;
 import os.shadattonmoy.imagepickerforandroid.constants.Constants;
 import os.shadattonmoy.imagepickerforandroid.constants.ImagePickerType;
 import os.shadattonmoy.imagepickerforandroid.constants.Tags;
@@ -26,6 +27,7 @@ public class ImagePickerActivity extends AppCompatActivity
     private ImagePickerActivityController controller;
     private Activity activity;
     private ImagePickerActivityScreenView screenView;
+    private static ImagePickerForAndroid imagePickerForAndroid;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,7 @@ public class ImagePickerActivity extends AppCompatActivity
         initSelectionBundle();
         controller.onCreate(getIntent(),imagePickerType);
         controller.setupToolbar(getIntent());
+        controller.setImagePickerForAndroid(imagePickerForAndroid);
 
 
     }
@@ -110,5 +113,10 @@ public class ImagePickerActivity extends AppCompatActivity
 
     public ImagePickerActivityController getController() {
         return controller;
+    }
+
+    public static void setImagePickerForAndroid(ImagePickerForAndroid imagePickerForAndroid)
+    {
+        ImagePickerActivity.imagePickerForAndroid = imagePickerForAndroid;
     }
 }

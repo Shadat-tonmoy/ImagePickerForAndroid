@@ -45,7 +45,6 @@ public class ImagePickerActivityController implements ImagePickerActivityScreen.
     {
         this.imagePickerType = imagePickerType;
         this.isBatchModeEnabled = extras.getBooleanExtra(Tags.BATCH_MODE_ENABLED,false);
-        this.imagePickerForAndroid = extras.getParcelableExtra(Tags.IMAGE_PICKER_FOR_ANDROID);
         arguments.putSerializable(Constants.IMAGE_PICKER_TYPE, imagePickerType);
         arguments.putBoolean(Tags.BATCH_MODE_ENABLED, isBatchModeEnabled);
         uiUpdateTask.setToolbarSpinner();
@@ -79,6 +78,7 @@ public class ImagePickerActivityController implements ImagePickerActivityScreen.
     public void onImageListSelected(List<String> selectedImageList)
     {
         imagePickerForAndroid.onImageListSelected(selectedImageList);
+        activity.finish();
     }
 
     @Override
@@ -132,5 +132,9 @@ public class ImagePickerActivityController implements ImagePickerActivityScreen.
     public void initToolbarAction()
     {
         screenView.initToolbarAction();
+    }
+
+    public void setImagePickerForAndroid(ImagePickerForAndroid imagePickerForAndroid) {
+        this.imagePickerForAndroid = imagePickerForAndroid;
     }
 }

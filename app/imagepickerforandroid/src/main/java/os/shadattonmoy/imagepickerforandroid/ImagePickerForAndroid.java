@@ -17,10 +17,10 @@ import os.shadattonmoy.imagepickerforandroid.ui.actvities.ImagePickerActivity;
 
 import static os.shadattonmoy.imagepickerforandroid.constants.Constants.INVALID;
 
-public class ImagePickerForAndroid implements Parcelable
+public class ImagePickerForAndroid /*implements Parcelable*/
 {
 
-    public interface ImageSelectionListener extends Serializable
+    public interface ImageSelectionListener /*extends Serializable*/
     {
         void onImageSelected(List<String> selectedImageList);
     }
@@ -33,26 +33,6 @@ public class ImagePickerForAndroid implements Parcelable
     private ImageSelectionListener listener;
     private Context context;
 
-
-    protected ImagePickerForAndroid(Parcel in) {
-        toolbarColor = in.readInt();
-        statusBarColor = in.readInt();
-        navigationIcon = in.readInt();
-        isBatchModeEnabled = in.readByte() != 0;
-    }
-
-    public static final Creator<ImagePickerForAndroid> CREATOR = new Creator<ImagePickerForAndroid>() {
-        @Override
-        public ImagePickerForAndroid createFromParcel(Parcel in) {
-            return new ImagePickerForAndroid(in);
-        }
-
-        @Override
-        public ImagePickerForAndroid[] newArray(int size) {
-            return new ImagePickerForAndroid[size];
-        }
-    };
-
     public void openImagePicker()
     {
         Intent intent = new Intent(context, ImagePickerActivity.class);
@@ -60,7 +40,7 @@ public class ImagePickerForAndroid implements Parcelable
         intent.putExtra(Tags.STATUS_BAR_COLOR,statusBarColor);
         intent.putExtra(Tags.NAVIGATION_ICON,navigationIcon);
         intent.putExtra(Tags.BATCH_MODE_ENABLED,isBatchModeEnabled);
-        intent.putExtra(Tags.IMAGE_PICKER_FOR_ANDROID,this);
+        ImagePickerActivity.setImagePickerForAndroid(this);
         context.startActivity(intent);
     }
 
@@ -72,19 +52,6 @@ public class ImagePickerForAndroid implements Parcelable
         this.isBatchModeEnabled = builder.isBatchModeEnabled;
         this.listener = builder.imageSelectionListener;
         this.context = builder.context;
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeInt(toolbarColor);
-        parcel.writeInt(statusBarColor);
-        parcel.writeInt(navigationIcon);
-        parcel.writeByte((byte) (isBatchModeEnabled ? 1 : 0));
     }
 
 
@@ -143,7 +110,6 @@ public class ImagePickerForAndroid implements Parcelable
 
     public void onImageListSelected(List<String> selectedImageList)
     {
-        Log.e(TAG, "onImageListSelected: listener "+listener);
         if(listener!=null)
             listener.onImageSelected(selectedImageList);
     }

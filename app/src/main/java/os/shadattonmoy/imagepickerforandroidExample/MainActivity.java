@@ -7,12 +7,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import java.io.Serializable;
 import java.util.List;
 
 import os.shadattonmoy.imagepickerforandroid.ImagePickerForAndroid;
 import os.shadattonmoy.imagepickerforandroid.helpers.AppPermissionHelper;
-import os.shadattonmoy.imagepickerforandroidExample.R;
 
 public class MainActivity extends AppCompatActivity implements ImagePickerForAndroid.ImageSelectionListener
 {

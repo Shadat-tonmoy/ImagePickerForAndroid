@@ -3,7 +3,7 @@
     package="os.shadattonmoy.imagepickerforandroid">
 
     <application>
-        <activity android:name=".ui.actvities.ImagePickerActivity"/>
+        <activity android:name=".ui.actvities.ImagePickerActivity" />
     </application>
 
 </manifest>
