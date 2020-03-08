@@ -119,7 +119,10 @@ public class ImagePickerActivityController implements ImagePickerActivityScreen.
         Bundle args = new Bundle();
         args.putSerializable(Constants.IMAGE_PICKER_TYPE,imagePickerType);
         if(arguments!=null)
+        {
             args.putBoolean(Constants.FOR_ADDING_MORE_IMAGE,arguments.getBoolean(Constants.FOR_ADDING_MORE_IMAGE,false));
+            args.putBoolean(Tags.BATCH_MODE_ENABLED,arguments.getBoolean(Tags.BATCH_MODE_ENABLED,false));
+        }
         uiUpdateTask
                 .replaceFragment(ImagePickerListFragment.newInstance(args), Constants.IMAGE_PICKER_LIST_FRAGMENT);
     }

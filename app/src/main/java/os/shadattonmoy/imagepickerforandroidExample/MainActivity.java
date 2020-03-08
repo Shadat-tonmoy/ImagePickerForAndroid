@@ -1,5 +1,6 @@
 package os.shadattonmoy.imagepickerforandroidExample;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,7 +18,10 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 import os.shadattonmoy.imagepickerforandroid.ImagePickerForAndroid;
+import os.shadattonmoy.imagepickerforandroid.constants.RequestCode;
 import os.shadattonmoy.imagepickerforandroid.helpers.AppPermissionHelper;
+
+import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 
 public class MainActivity extends AppCompatActivity implements ImagePickerForAndroid.BatchImageSelectionListener, ImagePickerForAndroid.SingleImageSelectionListener
 {
@@ -28,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements ImagePickerForAnd
     private ImageView singleModeOutputImageView;
     private TextView outputTextView;
     private RecyclerView batchOutputRecyclerView;
+    private boolean isBatchModeEnabled = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -56,8 +61,23 @@ public class MainActivity extends AppCompatActivity implements ImagePickerForAnd
         });
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults)
+    {
+
+        Log.e(TAG, "onRequestPermissionsResult: requestCode "+requestCode+" grantResults "+grantResults[0] );
+        if(grantResults.length>0 && grantResults[0] == PERMISSION_GRANTED)
+        {
+            if(requestCode==RequestCode.WRITE_EXTERNAL_STORAGE_PERMISSION)
+            {
+                openImagePicker(isBatchModeEnabled);
+            }
+        }
+    }
+
     private void openImagePicker(boolean batchMode)
     {
+        isBatchModeEnabled = batchMode;
         if(AppPermissionHelper.hasWriteExternalStoragePermission(this))
         {
             ImagePickerForAndroid imagePickerForAndroid = new ImagePickerForAndroid.Builder(this)
@@ -98,7 +118,5 @@ public class MainActivity extends AppCompatActivity implements ImagePickerForAnd
                 .load(selectedImage)
                 .into(singleModeOutputImageView);
         Log.e(TAG, "onSingleImageSelected: "+selectedImage);
-
-
     }
 }

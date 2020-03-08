@@ -8,6 +8,7 @@ import java.util.List;
 import os.shadattonmoy.imagepickerforandroid.constants.Constants;
 import os.shadattonmoy.imagepickerforandroid.constants.ImagePickerType;
 import os.shadattonmoy.imagepickerforandroid.constants.SortingType;
+import os.shadattonmoy.imagepickerforandroid.constants.Tags;
 import os.shadattonmoy.imagepickerforandroid.model.ImageFolder;
 import os.shadattonmoy.imagepickerforandroid.tasks.ImageFileFetchingTask;
 import os.shadattonmoy.imagepickerforandroid.tasks.uiUpdateTasks.ImagePickerListUIUpdateTask;
@@ -22,7 +23,7 @@ public class ImagePickerListController implements ImagePickerListScreen.Listener
     private ImagePickerListScreenView screenView;
     private ImagePickerType imagePickerType = ImagePickerType.FOLDER_LIST_FOR_IMAGE;
     private Bundle arguments;
-    private boolean titleAsc = true, sizeAsc = true, lastModifiedAsc = true,isAscending = false, forAppending = false;
+    private boolean titleAsc = true, sizeAsc = true, lastModifiedAsc = true,isAscending = false, forAppending = false, isBatchModeEnabled = false;
     private SortingType sortingType  = SortingType.FILE_LAST_MODIFIED_TIME;
 
     public ImagePickerListController(Activity activity)
@@ -70,6 +71,7 @@ public class ImagePickerListController implements ImagePickerListScreen.Listener
     public void bindArguments(Bundle arguments)
     {
         this.arguments = arguments;
+        isBatchModeEnabled = arguments.getBoolean(Tags.BATCH_MODE_ENABLED,false);
     }
 
     private void fetchPDFFiles()
@@ -103,6 +105,7 @@ public class ImagePickerListController implements ImagePickerListScreen.Listener
         Bundle args = new Bundle();
         args.putString(Constants.FOLDER_PATH_TAG,folderPath);
         args.putBoolean(Constants.FOR_ADDING_MORE_IMAGE,forAppending);
+        args.putBoolean(Tags.BATCH_MODE_ENABLED,isBatchModeEnabled);
         uiUpdateTask.loadAllImageListForFolder(args);
 
     }

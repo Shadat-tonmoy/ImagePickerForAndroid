@@ -55,6 +55,7 @@ public class ImagePickerListFragment extends Fragment
         controller = new ImagePickerListController(activity);
         controller.bindView(screenView);
         controller.onCreate();
+        controller.bindArguments(getArguments());
         return screenView.getRootView();
     }
 
