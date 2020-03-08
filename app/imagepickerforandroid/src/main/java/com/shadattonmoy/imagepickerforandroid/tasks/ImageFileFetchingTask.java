@@ -5,19 +5,18 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 
-import androidx.annotation.NonNull;
+import com.shadattonmoy.imagepickerforandroid.constants.Constants;
+import com.shadattonmoy.imagepickerforandroid.constants.ImagePickerType;
+import com.shadattonmoy.imagepickerforandroid.helpers.FileHelper;
+import com.shadattonmoy.imagepickerforandroid.model.ImageFolder;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import com.shadattonmoy.imagepickerforandroid.constants.Constants;
-import com.shadattonmoy.imagepickerforandroid.constants.ImagePickerType;
-import com.shadattonmoy.imagepickerforandroid.helpers.FileHelper;
-import com.shadattonmoy.imagepickerforandroid.model.ImageFolder;
 
 public class ImageFileFetchingTask extends AsyncTask<String, Void, List<String>>
 {

@@ -1,29 +1,26 @@
 package com.shadattonmoy.imagepickerforandroid.ui.adapters;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.bumptech.glide.Glide;
-
-import org.jetbrains.annotations.NotNull;
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-
 import com.shadattonmoy.imagepickerforandroid.R;
 import com.shadattonmoy.imagepickerforandroid.constants.ImagePickerType;
 import com.shadattonmoy.imagepickerforandroid.model.ImageFolder;
 import com.shadattonmoy.imagepickerforandroid.tasks.UtilityTask;
 import com.shadattonmoy.imagepickerforandroid.tasks.filteringTask.FileFilteringTask;
 import com.shadattonmoy.imagepickerforandroid.tasks.filteringTask.FileSortingTask;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ImagePickerListAdapter extends RecyclerView.Adapter<ImagePickerListAdapter.ListViewHolder> implements FileFilteringTask.Listener, FileSortingTask.Listener {
 
@@ -68,7 +65,7 @@ public class ImagePickerListAdapter extends RecyclerView.Adapter<ImagePickerList
         this.imagePickerType = imagePickerType;
     }
 
-    @NotNull
+    @NonNull
     @Override
     public ListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
@@ -78,7 +75,7 @@ public class ImagePickerListAdapter extends RecyclerView.Adapter<ImagePickerList
     }
 
     @Override
-    public void onBindViewHolder(@NotNull ListViewHolder holder, int position)
+    public void onBindViewHolder(@NonNull ListViewHolder holder, int position)
     {
         if(imagePickerType == ImagePickerType.FOLDER_LIST_FOR_IMAGE)
         {

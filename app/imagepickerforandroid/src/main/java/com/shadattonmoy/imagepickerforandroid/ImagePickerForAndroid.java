@@ -2,13 +2,12 @@ package com.shadattonmoy.imagepickerforandroid;
 
 import android.content.Context;
 import android.content.Intent;
-
-import org.jetbrains.annotations.NotNull;
-
-import java.util.List;
+import android.support.annotation.NonNull;
 
 import com.shadattonmoy.imagepickerforandroid.constants.Tags;
 import com.shadattonmoy.imagepickerforandroid.ui.actvities.ImagePickerActivity;
+
+import java.util.List;
 
 import static com.shadattonmoy.imagepickerforandroid.constants.Constants.INVALID;
 
@@ -98,13 +97,13 @@ public class ImagePickerForAndroid
             return this;
         }
 
-        public Builder batchImageSelectionListener(@NotNull BatchImageSelectionListener listener)
+        public Builder batchImageSelectionListener(@NonNull BatchImageSelectionListener listener)
         {
             this.batchImageSelectionListener = listener;
             return this;
         }
 
-        public Builder singleImageSelectionListener(@NotNull SingleImageSelectionListener listener)
+        public Builder singleImageSelectionListener(@NonNull SingleImageSelectionListener listener)
         {
             this.singleImageSelectionListener = listener;
             return this;

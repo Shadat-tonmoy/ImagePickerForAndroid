@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import java.util.List;
-
 import com.shadattonmoy.imagepickerforandroid.ImagePickerForAndroid;
 import com.shadattonmoy.imagepickerforandroid.constants.ImagePickerType;
 import com.shadattonmoy.imagepickerforandroid.constants.Tags;
@@ -14,6 +12,8 @@ import com.shadattonmoy.imagepickerforandroid.ui.fragments.ImagePickerGridFragme
 import com.shadattonmoy.imagepickerforandroid.ui.fragments.ImagePickerListFragment;
 import com.shadattonmoy.imagepickerforandroid.ui.screen.ImagePickerActivityScreen;
 import com.shadattonmoy.imagepickerforandroid.ui.screenView.ImagePickerActivityScreenView;
+
+import java.util.List;
 
 public class ImagePickerActivityController implements ImagePickerActivityScreen.Listener
 {

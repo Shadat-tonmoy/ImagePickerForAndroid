@@ -1,11 +1,10 @@
 package com.shadattonmoy.imagepickerforandroidExample;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -14,12 +13,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-
-import java.util.List;
-
 import com.shadattonmoy.imagepickerforandroid.ImagePickerForAndroid;
 import com.shadattonmoy.imagepickerforandroid.constants.RequestCode;
 import com.shadattonmoy.imagepickerforandroid.helpers.AppPermissionHelper;
+
+import java.util.List;
 
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 

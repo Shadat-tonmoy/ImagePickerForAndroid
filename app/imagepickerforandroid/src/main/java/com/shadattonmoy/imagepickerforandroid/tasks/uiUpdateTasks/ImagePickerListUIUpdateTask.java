@@ -2,11 +2,8 @@ package com.shadattonmoy.imagepickerforandroid.tasks.uiUpdateTasks;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import java.util.List;
 
 import com.shadattonmoy.imagepickerforandroid.constants.Tags;
 import com.shadattonmoy.imagepickerforandroid.model.ImageFolder;
@@ -14,6 +11,8 @@ import com.shadattonmoy.imagepickerforandroid.ui.actvities.ImagePickerActivity;
 import com.shadattonmoy.imagepickerforandroid.ui.adapters.ImagePickerListAdapter;
 import com.shadattonmoy.imagepickerforandroid.ui.fragments.ImagePickerGridFragment;
 import com.shadattonmoy.imagepickerforandroid.ui.screenView.ImagePickerListScreenView;
+
+import java.util.List;
 
 public class ImagePickerListUIUpdateTask
 {
