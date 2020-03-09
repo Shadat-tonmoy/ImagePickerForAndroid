@@ -69,7 +69,7 @@ public class ImagePickerForAndroid
             this.context = context;
             toolbarColor = INVALID;
             statusBarColor = INVALID;
-            navigationIcon = INVALID;
+            navigationIcon = R.drawable.back_white;
             isBatchModeEnabled = false;
         }
 

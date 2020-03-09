@@ -40,13 +40,6 @@ public class ImagePickerActivityScreenView extends BaseScreenView<ImagePickerAct
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
             {
-                try
-                {
-                    ((TextView) parent.getChildAt(0)).setTextColor(Color.WHITE);
-                }catch(Exception e)
-                {
-
-                }
                 for(Listener listener:getListeners())
                 {
                     listener.onSpinnerItemSelected(position);

@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".ui.actvities.ImagePickerActivity">
 
     <FrameLayout
         android:id="@+id/fragment_container"
@@ -25,24 +26,26 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/filepicker_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="?android:attr/actionBarSize"
             android:background="@color/colorPrimary"
-            app:titleTextColor="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:titleTextColor="@color/white">
+
+        <Spinner
+            android:id="@+id/toolbar_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:visibility="visible"
+            android:backgroundTint="@color/white"
+            android:layout_gravity="start"/>
 
 
-            <Spinner
-                android:id="@+id/toolbar_spinner"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:visibility="visible"
-                android:backgroundTint="@color/white"
-                android:layout_gravity="start"/>
+    </android.support.v7.widget.Toolbar>
 
 
-        </android.support.v7.widget.Toolbar>
+
 
     </FrameLayout>
 

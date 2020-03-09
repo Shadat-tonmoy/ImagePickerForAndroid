@@ -81,7 +81,6 @@ public class MainActivity extends AppCompatActivity implements ImagePickerForAnd
             ImagePickerForAndroid imagePickerForAndroid = new ImagePickerForAndroid.Builder(this)
                     .toolbarColor(this.getResources().getColor(R.color.colorRed))
                     .statusBarColor(this.getResources().getColor(R.color.colorRed))
-                    .navigationIcon(R.drawable.back_white_cupertino)
                     .batchMode(batchMode)
                     .batchImageSelectionListener(this)
                     .singleImageSelectionListener(this)

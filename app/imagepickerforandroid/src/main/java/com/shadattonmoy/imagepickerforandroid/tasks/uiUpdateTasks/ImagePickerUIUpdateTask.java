@@ -35,7 +35,7 @@ public class ImagePickerUIUpdateTask
     {
         Spinner spinner = screenView.getFileOptionSpinner();
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(activity,
-                R.array.image_filepicker_options, android.R.layout.simple_spinner_item);
+                R.array.image_filepicker_options, R.layout.toolbar_spinner_item_layout);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
     }
