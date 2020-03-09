@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements ImagePickerForAnd
         {
             ImagePickerForAndroid imagePickerForAndroid = new ImagePickerForAndroid.Builder(this)
                     .toolbarColor(this.getResources().getColor(R.color.colorRed))
-                    .statusBarColor(this.getResources().getColor(R.color.colorRed))
+                    .statusBarColor(this.getResources().getColor(R.color.colorRedDark))
                     .batchMode(batchMode)
                     .batchImageSelectionListener(this)
                     .singleImageSelectionListener(this)
