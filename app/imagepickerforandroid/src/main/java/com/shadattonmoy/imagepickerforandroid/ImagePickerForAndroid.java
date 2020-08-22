@@ -2,7 +2,8 @@ package com.shadattonmoy.imagepickerforandroid;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.NonNull;
+
+import androidx.annotation.NonNull;
 
 import com.shadattonmoy.imagepickerforandroid.constants.Tags;
 import com.shadattonmoy.imagepickerforandroid.ui.actvities.ImagePickerActivity;

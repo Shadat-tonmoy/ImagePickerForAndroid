@@ -3,13 +3,14 @@ package com.shadattonmoy.imagepickerforandroid.tasks.uiUpdateTasks;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.shadattonmoy.imagepickerforandroid.R;
 import com.shadattonmoy.imagepickerforandroid.constants.Tags;

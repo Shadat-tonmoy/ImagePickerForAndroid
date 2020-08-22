@@ -1,6 +1,6 @@
 package com.shadattonmoy.imagepickerforandroid.ui.screenView;
 
-import android.support.annotation.Nullable;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +9,8 @@ import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
 
 import com.shadattonmoy.imagepickerforandroid.R;
 import com.shadattonmoy.imagepickerforandroid.constants.EventType;
